@@ -17,43 +17,38 @@
 <body>
 
     <!-- ================= NAVBAR ================= -->
-
     <header>
-
         <nav id="navbar" class="auth-pending" aria-busy="true">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 8px;">
+                    <img src="indexImage/foodhub.png" alt="FoodHub Logo" style="height: 60px; width: auto;">
+                    <h2 style="margin: 0; color: #ff4757;">FoodHub</h2>
+                </a>
+            </div>
 
-             <div class="logo">
-                 <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 8px;">
-                     <img src="indexImage/foodhub.png" alt="FoodHub Logo" style="height: 60px; width: auto;">
-                     <h2 style="margin: 0; color: #ff4757;">FoodHub</h2>
-                 </a>
-             </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="nav-signup" class="auth-nav-item"><a href="signup.html" class="signup-btn">Signup</a></li>
+                <li id="nav-login" class="auth-nav-item"><a href="login.html" class="login-btn">login</a></li>
+                <li id="nav-profile" class="auth-nav-item" style="display: none;">
+                    <a href="profile.html" class="nav-profile-icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Profile">
+                    </a>
+                </li>
+                <li class="auth-nav-loader" aria-label="Checking login status"><span></span><span></span><span></span></li>
+            </ul>
 
-             <ul class="nav-links">
-                 <li><a href="index.html" class="active">Home</a></li>
-                 <li><a href="menu.html">Menu</a></li>
-                 <li><a href="cart.html">Cart</a></li>
-                 <li><a href="checkout.html">Checkout</a></li>
-                 <li><a href="about.html">About</a></li>
-                 <li><a href="contact.html">Contact</a></li>
-                 <li id="nav-signup" class="auth-nav-item"><a href="signup.html" class="signup-btn">Signup</a></li>
-                 <li id="nav-login" class="auth-nav-item"><a href="login.html" class="login-btn">login</a></li>
-                 <li id="nav-profile" class="auth-nav-item" style="display: none;">
-                     <a href="profile.html" class="nav-profile-icon">
-                         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Profile">
-                     </a>
-                 </li>
-                 <li class="auth-nav-loader" aria-label="Checking login status"><span></span><span></span><span></span></li>
-             </ul>
-
-             <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
-                 <span></span>
-                 <span></span>
-                 <span></span>
-             </button>
-
+            <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sideMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
-
     </header>
 
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -64,7 +59,7 @@
                 <img src="indexImage/foodhub.png" alt="FoodHub brand">
                 <span>FoodHub</span>
             </div>
-            <button class="close-menu" id="closeMenu" type="button" aria-label="Close menu">&times;</button>
+            <button class="close-menu" id="closeMenu" type="button" aria-label="Close navigation menu">&times;</button>
         </div>
 
         <nav class="side-menu-nav">
@@ -83,255 +78,130 @@
     </aside>
 
     <!-- ================= HERO SECTION ================= -->
-
     <section id="hero">
-
         <div class="hero-text">
-
             <h1>Delicious Food <br> Delivered To Your Door</h1>
-
             <p>
                 Order your favourite meals from the best restaurants.
                 Fast delivery, fresh ingredients and affordable prices.
             </p>
-
             <a href="menu.html" class="btn">Order Now</a>
-
         </div>
 
         <div class="hero-image">
-
             <img src="indexImage/hero.png" alt="Food Image">
-
         </div>
-
     </section>
 
     <!-- ================= SEARCH ================= -->
-
     <section class="menu-search home-menu-search">
-
         <div class="search-box home-search-box">
-
             <input type="text" id="searchBox" placeholder="Search your favourite food or restaurant..."
                 autocomplete="off" aria-label="Search food or restaurant">
-
             <button id="searchBtn" type="button" aria-label="Search">
                 <i class="fa-solid fa-search"></i>
             </button>
-
         </div>
-
         <div id="homeSearchResults" class="home-search-results" aria-live="polite"></div>
-
     </section>
 
     <!-- ================= CATEGORIES ================= -->
-
     <section id="category">
-
         <h2>Popular Categories</h2>
-
         <div class="category-container">
-
             <div class="card">
                 <img src="indexImage/pizza.png" alt="pizza image">
                 <h3>Pizza</h3>
             </div>
-
             <div class="card">
-                <img src="indexImage/burger.png" alt="">
+                <img src="indexImage/burger.png" alt="burger image">
                 <h3>Burger</h3>
             </div>
-
             <div class="card">
-                <img src="indexImage/resbiryani.png" alt="biryani">
+                <img src="indexImage/resbiryani.png" alt="biryani image">
                 <h3>Biryani</h3>
             </div>
-
             <div class="card">
                 <img src="indexImage/juice.png" alt="juice image">
                 <h3>Drinks</h3>
             </div>
-
         </div>
-
     </section>
 
-    <!-- ================= POPULAR RESTAURANTS (DYNAMIC FIREBASE CONTAINER) ================= -->
-
+    <!-- ================= POPULAR RESTAURANTS ================= -->
     <section id="restaurants">
-
         <h2>Popular Restaurants</h2>
-
-        <!-- Admin panel se add kiye gaye restaurants yahan automatically load honge -->
         <div class="restaurant-container" id="dynamicRestaurantsContainer">
             <div style="text-align: center; width: 100%; padding: 30px;">
                 <p style="color: #777;">Loading Restaurants from Admin...</p>
             </div>
         </div>
-
     </section>
 
     <!-- ================= WHY CHOOSE US ================= -->
-
     <section id="why-us">
-
         <h2>Why Choose FoodHub?</h2>
-
         <div class="why-container">
-
             <div class="why-box">
-
                 <i class="fa-solid fa-truck-fast"></i>
-
                 <h3>Fast Delivery</h3>
-
                 <p>Quick and safe food delivery at your doorstep.</p>
-
             </div>
-
             <div class="why-box">
-
                 <i class="fa-solid fa-bowl-food"></i>
-
                 <h3>Fresh Food</h3>
-
                 <p>Prepared with fresh ingredients every day.</p>
-
             </div>
-
             <div class="why-box">
-
                 <i class="fa-solid fa-wallet"></i>
-
                 <h3>Affordable Price</h3>
-
                 <p>Enjoy delicious food at budget-friendly prices.</p>
-
             </div>
-
         </div>
-
     </section>
 
     <!-- ================= REVIEWS ================= -->
-
     <section id="reviews">
-
         <h2>Customer Reviews</h2>
-
         <div class="review-container">
-
             <div class="review">
-
-                <p>
-                    "Amazing food and very fast delivery.
-                    Highly recommended!"
-                </p>
-
+                <p>"Amazing food and very fast delivery. Highly recommended!"</p>
                 <h4>- Rahul</h4>
-
             </div>
-
             <div class="review">
-
-                <p>
-                    "Best pizza in town. Great service and quality."
-                </p>
-
+                <p>"Best pizza in town. Great service and quality."</p>
                 <h4>- Priya</h4>
-
             </div>
-
             <div class="review">
-
-                <p>
-                    "Affordable price and delicious taste."
-                </p>
-
+                <p>"Affordable price and delicious taste."</p>
                 <h4>- Aman</h4>
-
             </div>
-
         </div>
-
     </section>
 
     <!-- ================= FOOTER ================= -->
-
     <footer>
-
         <div class="footer-content">
-
             <h2>🍔 FoodHub</h2>
-
             <p>Fresh Food • Fast Delivery • Best Taste</p>
-
-            <p>
-                Email :
-                <a href="mailto:akashkumar906552@gmail.com">
-                    akashkumar906552@gmail.com
-                </a>
-            </p>
-
-            <p>
-                Phone :
-                <a href="tel:+919065521532">
-                    +91 9065521532
-                </a>
-            </p>
-
+            <p>Email : <a href="mailto:akashkumar906552@gmail.com">akashkumar906552@gmail.com</a></p>
+            <p>Phone : <a href="tel:+919065521532">+91 9065521532</a></p>
             <div class="social">
-
                 <a href="#"><i class="fab fa-facebook"></i></a>
-
                 <a href="#"><i class="fab fa-instagram"></i></a>
-
                 <a href="#"><i class="fab fa-twitter"></i></a>
-
                 <a href="#"><i class="fab fa-youtube"></i></a>
-
             </div>
-
             <p>© 2026 FoodHub. All Rights Reserved.</p>
-
         </div>
-
     </footer>
 
     <script src="toast.js"></script>
     <script type="module" src="cart-manager.js"></script>
+    <!-- script.js is the single source of truth for the responsive menu. -->
     <script src="script.js"></script>
     <script type="module" src="navbar.js"></script>
     <script src="bottom-nav.js"></script>
-
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const sideMenu = document.getElementById('sideMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const closeMenu = document.getElementById('closeMenu');
-
-        const setMenuState = (isOpen) => {
-            sideMenu.classList.toggle('open', isOpen);
-            menuOverlay.classList.toggle('visible', isOpen);
-            menuToggle.classList.toggle('active', isOpen);
-            menuToggle.setAttribute('aria-expanded', String(isOpen));
-            document.body.classList.toggle('menu-open', isOpen);
-        };
-
-        menuToggle.addEventListener('click', () => {
-            const isOpen = !sideMenu.classList.contains('open');
-            setMenuState(isOpen);
-        });
-
-        closeMenu.addEventListener('click', () => setMenuState(false));
-        menuOverlay.addEventListener('click', () => setMenuState(false));
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') setMenuState(false);
-        });
-    </script>
 
     <!-- Live Dynamic Restaurants Loader Script -->
     <script type="module">
@@ -357,19 +227,11 @@
                             <img src="${r.image}" alt="${r.name}" onerror="this.src='https://via.placeholder.com/250x150?text=No+Banner'">
                             <div class="restaurant-info">
                                 <h3>${r.name}</h3>
-                                <p class="rating">
-                                    ⭐ ${r.rating || 4.5} <span>(${r.reviews || 'Reviews'})</span>
-                                </p>
-                                <p class="time">
-                                    <i class="fa-solid fa-clock"></i>
-                                    ${r.deliveryTime || '20-30 mins'}
-                                </p>
-                                <button onclick="location.href='menu.html?restaurant=${r.slug}'">
-                                    View Menu
-                                </button>
+                                <p class="rating">⭐ ${r.rating || 4.5} <span>(${r.reviews || 'Reviews'})</span></p>
+                                <p class="time"><i class="fa-solid fa-clock"></i> ${r.deliveryTime || '20-30 mins'}</p>
+                                <button onclick="location.href='menu.html?restaurant=${r.slug}'">View Menu</button>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                     container.insertAdjacentHTML("beforeend", card);
                 });
             });
