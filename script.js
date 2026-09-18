@@ -19,31 +19,51 @@ if (navbar && menuToggle && sideMenu && menuOverlay) {
         menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
         document.body.classList.toggle("menu-open", isOpen);
 
-        if (isOpen) {
-            menuToggle.innerHTML = '<span class="menu-cross">×</span>';
-        } else {
-            menuToggle.innerHTML = '<span></span><span></span><span></span>';
-        }
+        // Keep one clear, professional control: hamburger when closed and X when open.
+        menuToggle.innerHTML = isOpen
+            ? '<span class="menu-cross" aria-hidden="true">&times;</span>'
+            : '<span></span><span></span><span></span>';
     };
 
-    menuToggle.addEventListener("click", () => {
+    // Prevent the duplicate inline menu handlers on older pages from toggling the
+    // menu twice. This keeps the open/close state reliable on every page.
+    menuToggle.addEventListener("click", (event) => {
+        event.stopImmediatePropagation();
         setMenuState(!sideMenu.classList.contains("open"));
     });
 
     if (closeMenu) {
-        closeMenu.addEventListener("click", () => setMenuState(false));
+        closeMenu.addEventListener("click", (event) => {
+            event.stopImmediatePropagation();
+            setMenuState(false);
+            menuToggle.focus();
+        });
     }
 
-    menuOverlay.addEventListener("click", () => setMenuState(false));
-    sideMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => setMenuState(false)));
+    menuOverlay.addEventListener("click", (event) => {
+        event.stopImmediatePropagation();
+        setMenuState(false);
+    });
+
+    sideMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => setMenuState(false));
+    });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") setMenuState(false);
+        if (event.key === "Escape" && sideMenu.classList.contains("open")) {
+            setMenuState(false);
+            menuToggle.focus();
+        }
     });
 
     window.addEventListener("resize", () => {
-        if (window.innerWidth > 760) setMenuState(false);
+        if (window.innerWidth > 760 && sideMenu.classList.contains("open")) {
+            setMenuState(false);
+        }
     });
+
+    // Always start in a predictable closed state after refresh/navigation.
+    setMenuState(false);
 }
 
 // ---------- SEARCH ----------
@@ -140,31 +160,22 @@ function showMenuSearchResults(query) {
 
 if (searchBox) {
     searchBox.addEventListener("input", function () {
-        if (homeSearchResults) {
-            showHomeSearchResults(this.value);
-        } else {
-            showMenuSearchResults(this.value);
-        }
+        if (homeSearchResults) showHomeSearchResults(this.value);
+        else showMenuSearchResults(this.value);
     });
 }
 
 if (searchBtn && searchBox) {
     searchBtn.addEventListener("click", function () {
-        if (homeSearchResults) {
-            showHomeSearchResults(searchBox.value);
-        } else {
-            showMenuSearchResults(searchBox.value);
-        }
+        if (homeSearchResults) showHomeSearchResults(searchBox.value);
+        else showMenuSearchResults(searchBox.value);
     });
 
     searchBox.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
-            if (homeSearchResults) {
-                showHomeSearchResults(this.value);
-            } else {
-                showMenuSearchResults(this.value);
-            }
+            if (homeSearchResults) showHomeSearchResults(this.value);
+            else showMenuSearchResults(this.value);
         }
     });
 }
@@ -175,7 +186,6 @@ if (searchBox && !homeSearchResults) {
     if (menuSearch) {
         const decodedQuery = decodeURIComponent(menuSearch).replace(/\+/g, ' ');
         searchBox.value = decodedQuery;
-
         setTimeout(() => showMenuSearchResults(decodedQuery), 100);
         setTimeout(() => showMenuSearchResults(decodedQuery), 400);
         setTimeout(() => showMenuSearchResults(decodedQuery), 1200);
